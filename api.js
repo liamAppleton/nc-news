@@ -14,4 +14,9 @@ const getArticleById = async (articleId) => {
   return data;
 };
 
-export { getArticles, getArticleById };
+const getCommentsByArticleId = async (articleId) => {
+  const data = await apiClient.get(`/articles/${articleId}/comments`);
+  return data;
+};
+
+export { getArticles, getArticleById, getCommentsByArticleId };
