@@ -3,23 +3,30 @@ import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { CommentCard } from './CommentCard';
+import { Loading } from './Loading';
 import { getArticleById, getCommentsByArticleId } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [commentsById, setCommentsById] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleById(article_id).then(({ data: { article } }) => {
-      setSingleArticle(article);
-    });
-    getCommentsByArticleId(article_id).then(({ data: { comments } }) => {
-      console.log(comments);
-      setCommentsById(comments);
-    });
+    getArticleById(article_id)
+      .then(({ data: { article } }) => {
+        setSingleArticle(article);
+        return getCommentsByArticleId(article_id);
+      })
+      .then(({ data: { comments } }) => {
+        console.log(comments);
+        setCommentsById(comments);
+        setLoading(false);
+      });
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="container">
