@@ -11,5 +11,10 @@ describe('dateFormatter()', () => {
       const result = dateFormatter(pastDate);
       expect(result).toBe('a few seconds ago');
     });
+    test('between 1 and 59 mins: should return "n minutes ago"', () => {
+      const pastDate = new Date(now - 30 * 60 * 1000); // 30 mins
+      const result = dateFormatter(pastDate);
+      expect(result).toBe('30 minutes ago');
+    });
   });
 });
