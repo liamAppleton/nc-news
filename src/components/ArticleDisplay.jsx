@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
+import { Loading } from './Loading';
 
 export const ArticleDisplay = () => {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getArticles().then(
@@ -12,11 +14,13 @@ export const ArticleDisplay = () => {
           articles: { rows },
         },
       }) => {
-        console.log(rows);
         setArticles(rows);
+        setLoading(false);
       }
     );
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="container">
