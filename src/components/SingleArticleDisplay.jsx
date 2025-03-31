@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { getArticleById } from '../../api';
+import { dateFormatter } from '../../utils/utils';
 
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
@@ -24,7 +25,8 @@ export const SingleArticleDisplay = () => {
             <Card.Body>
               <Card.Title>{singleArticle.title}</Card.Title>
               <Card.Text className="fst-italic">
-                {singleArticle.author} <span>{singleArticle.created_at}</span>
+                {singleArticle.author}{' '}
+                <span>{dateFormatter(new Date(singleArticle.created_at))}</span>
               </Card.Text>
               <Card.Text>{singleArticle.body}</Card.Text>
               <Button variant="primary">Go somewhere</Button>
