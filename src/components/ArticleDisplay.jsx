@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getArticles } from '../../api';
+import { ArticleCard } from './ArticleCard';
 
 export const ArticleDisplay = () => {
   const [articles, setArticles] = useState([]);
@@ -11,20 +12,26 @@ export const ArticleDisplay = () => {
           articles: { rows },
         },
       }) => {
+        console.log(rows);
         setArticles(rows);
       }
     );
   }, []);
 
   return (
-    <div className="container border">
-      <ul>
-        {articles.map(
-          ({ article_id, article_img_url, comment_count, title }) => {
-            return <li key={article_id}>{title}</li>;
-          }
-        )}
-      </ul>
+    <div className="container">
+      <div className="row">
+        {articles.map((article) => {
+          return (
+            <div
+              key={article.article_id}
+              className="col-12 d-flex justify-content-center"
+            >
+              <ArticleCard article={article} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
