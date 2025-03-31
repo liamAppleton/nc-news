@@ -9,4 +9,9 @@ const getArticles = async () => {
   return data;
 };
 
-export { getArticles };
+const getArticleById = async (articleId) => {
+  const data = await apiClient.get(`/articles/${articleId}`);
+  return data;
+};
+
+export { getArticles, getArticleById };
