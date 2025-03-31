@@ -3,7 +3,9 @@ export const dateFormatter = (date) => {
 
   if (timeElapsed < 60) {
     return 'a few seconds ago';
-  } else if (timeElapsed < 60 * 60) {
+  } else if (timeElapsed < 3600) {
     return `${Math.floor(timeElapsed / 60)} minutes ago`;
+  } else if (timeElapsed < 86400) {
+    return `${Math.floor(timeElapsed / 3600)} hours ago`;
   }
 };
