@@ -26,5 +26,15 @@ describe('dateFormatter()', () => {
       const result = dateFormatter(pastDate);
       expect(result).toBe('10 days ago');
     });
+    test('between 1 and 11 months: should return "n months ago"', () => {
+      const pastDate = new Date(now - 26280000000); // 10 months
+      const result = dateFormatter(pastDate);
+      expect(result).toBe('10 months ago');
+    });
+    test('over 12 months: should return "n years ago"', () => {
+      const pastDate = new Date(now - 63_070_000_000); // 2 years
+      const result = dateFormatter(pastDate);
+      expect(result).toBe('2 years ago');
+    });
   });
 });
