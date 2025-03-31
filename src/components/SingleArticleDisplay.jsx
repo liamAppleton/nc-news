@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Loading } from './Loading';
 import { CommendCard } from './CommendCard';
 import { getArticleById, getCommentsByArticleId } from '../../api';
 import { dateFormatter } from '../../utils/utils';
@@ -9,6 +10,7 @@ import { dateFormatter } from '../../utils/utils';
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [commentsForArticle, setCommentsForArticle] = useState([]);
+  const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -18,10 +20,12 @@ export const SingleArticleDisplay = () => {
         return getCommentsByArticleId(article_id);
       })
       .then(({ data: { comments } }) => {
-        console.log(comments);
         setCommentsForArticle(comments);
+        setLoading(false);
       });
   }, []);
+
+  if (loading) return <Loading />;
 
   return (
     <div className="container">
