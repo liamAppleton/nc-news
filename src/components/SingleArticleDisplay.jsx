@@ -2,17 +2,22 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { getArticleById } from '../../api';
+import { CommentCard } from './CommentCard';
+import { getArticleById, getCommentsByArticleId } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
+  const [commentsById, setCommentsById] = useState([]);
   const { article_id } = useParams();
 
   useEffect(() => {
     getArticleById(article_id).then(({ data: { article } }) => {
-      console.log(article);
       setSingleArticle(article);
+    });
+    getCommentsByArticleId(article_id).then(({ data: { comments } }) => {
+      console.log(comments);
+      setCommentsById(comments);
     });
   }, []);
 
@@ -33,6 +38,18 @@ export const SingleArticleDisplay = () => {
             </Card.Body>
           </Card>
         </div>
+      </div>
+      <div className="row">
+        {commentsById.map((comment) => {
+          return (
+            <div
+              key={comment.comment_id}
+              className="col-12 d-flex justify-content-center"
+            >
+              <CommentCard comment={comment} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );
