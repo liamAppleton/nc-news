@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CommentCard } from './CommentCard';
+import { AddComment } from './AddComment';
 import { Loading } from './Loading';
 import { getCommentsByArticleId } from '../../api';
 
@@ -20,6 +21,9 @@ export const CommentDisplay = ({ articleId }) => {
     <>
       <div className="mb-3">
         <p>Comments</p>
+      </div>
+      <div className="mb-3">
+        <AddComment articleId={articleId} />
       </div>
       <div className="row">
         {commentsForArticle.map((comment) => {

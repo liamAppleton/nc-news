@@ -29,10 +29,18 @@ const patchVotesComment = async (commentId, votes) => {
   await apiClient.patch(`/comments/${commentId}`, { inc_votes: votes });
 };
 
+const postComment = async (articleId, { author, body }) => {
+  await apiClient.post(`/articles/${articleId}/comments`, {
+    username: author,
+    body: body,
+  });
+};
+
 export {
   getArticles,
   getArticleById,
   getCommentsByArticleId,
   patchVotesArticle,
   patchVotesComment,
+  postComment,
 };
