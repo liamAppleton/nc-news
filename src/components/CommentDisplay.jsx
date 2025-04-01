@@ -14,13 +14,13 @@ export const CommentDisplay = ({ articleId }) => {
       setCommentsForArticle(comments);
       setLoading(false);
     });
-  }, []);
+  }, [commentPosted]);
 
   if (loading) return <Loading />;
 
   return (
     <>
-      <div className="mb-3 d-flex justify-content-between position-relative">
+      <div className="d-flex justify-content-between position-relative">
         <p>Comments</p>
         {commentPosted && (
           <p
