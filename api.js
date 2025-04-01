@@ -19,4 +19,13 @@ const getCommentsByArticleId = async (articleId) => {
   return data;
 };
 
-export { getArticles, getArticleById, getCommentsByArticleId };
+const patchVotesArticle = async (articleId, votes) => {
+  await apiClient.patch(`/articles/${articleId}`, { votes });
+};
+
+export {
+  getArticles,
+  getArticleById,
+  getCommentsByArticleId,
+  patchVotesArticle,
+};
