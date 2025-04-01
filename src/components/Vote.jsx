@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { BiUpvote } from 'react-icons/bi';
 import { BiDownvote } from 'react-icons/bi';
-import { patchVotesArticle } from '../../api';
+import { patchVotesComment, patchVotesArticle } from '../../api';
 
-export const Vote = ({ id: articleId, votes }) => {
+export const Vote = ({ id, votes, componentName }) => {
   const [upClicked, setUpClicked] = useState(false);
   const [downClicked, setDownClicked] = useState(false);
   const [newVote, setNewVote] = useState(0);
@@ -24,17 +24,32 @@ export const Vote = ({ id: articleId, votes }) => {
 
   useEffect(() => {
     setOptimisticVotes(optimisticVotes + newVote);
-    patchVotesArticle(articleId, newVote)
-      .catch(() => {
-        setOptimisticVotes(votes);
-        setUpClicked(false);
-        setDownClicked(false);
-        setError(true);
-        setTimeout(() => setError(false), 2000);
-      })
-      .finally(() => {
-        setNewVote(0);
-      });
+
+    if (componentName === 'CommentCard') {
+      patchVotesComment(id, newVote)
+        .catch(() => {
+          setOptimisticVotes(votes);
+          setUpClicked(false);
+          setDownClicked(false);
+          setError(true);
+          setTimeout(() => setError(false), 2000);
+        })
+        .finally(() => {
+          setNewVote(0);
+        });
+    } else {
+      patchVotesArticle(id, newVote)
+        .catch(() => {
+          setOptimisticVotes(votes);
+          setUpClicked(false);
+          setDownClicked(false);
+          setError(true);
+          setTimeout(() => setError(false), 2000);
+        })
+        .finally(() => {
+          setNewVote(0);
+        });
+    }
   }, [newVote]);
 
   return (

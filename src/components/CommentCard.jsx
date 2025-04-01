@@ -1,5 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import { dateFormatter } from '../../utils/utils';
+import { Vote } from './Vote';
 
 export const CommentCard = ({ comment }) => {
   return (
@@ -9,7 +10,11 @@ export const CommentCard = ({ comment }) => {
           {comment.author} {dateFormatter(new Date(comment.created_at))}
         </Card.Subtitle>
         <Card.Text>{comment.body}</Card.Text>
-        <Card.Text>Votes: {comment.votes}</Card.Text>
+        <Vote
+          id={comment.comment_id}
+          votes={comment.votes}
+          componentName={'CommentCard'}
+        />
       </Card.Body>
     </Card>
   );
