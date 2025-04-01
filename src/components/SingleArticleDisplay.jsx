@@ -30,7 +30,7 @@ export const SingleArticleDisplay = () => {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-12 d-flex justify-content-center">
+        <div className="col-12 d-flex justify-content-center mb-5">
           <Card style={{ width: '100%' }}>
             <Card.Img variant="top" src={singleArticle.article_img_url} />
             <Card.Body>
@@ -45,12 +45,15 @@ export const SingleArticleDisplay = () => {
           </Card>
         </div>
       </div>
+      <div className="mb-3">
+        <p>Comments</p>
+      </div>
       <div className="row">
         {commentsForArticle.map((comment) => {
           return (
             <div
               key={comment.comment_id}
-              className="col-12 d-flex justify-content-center"
+              className="col-12 d-flex justify-content-center mb-3"
             >
               <CommendCard comment={comment} />
             </div>
