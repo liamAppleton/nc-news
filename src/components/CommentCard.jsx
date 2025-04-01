@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { dateFormatter } from '../../utils/utils';
 
-export const CommendCard = ({ comment }) => {
+export const CommentCard = ({ comment }) => {
   return (
     <Card style={{ width: '100%' }}>
       <Card.Body>

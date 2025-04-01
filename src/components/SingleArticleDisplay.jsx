@@ -2,31 +2,25 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Loading } from './Loading';
-import { CommendCard } from './CommendCard';
+import { CommentDisplay } from './CommentDisplay';
 import { Vote } from './Vote';
-import { getArticleById, getCommentsByArticleId } from '../../api';
+import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
-  const [commentsForArticle, setCommentsForArticle] = useState([]);
   const [loading, setLoading] = useState(true);
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleById(article_id)
-      .then(({ data: { article } }) => {
-        setSingleArticle(article);
-        return getCommentsByArticleId(article_id);
-      })
-      .then(({ data: { comments } }) => {
-        setCommentsForArticle(comments);
-        setLoading(false);
-      });
+    getArticleById(article_id).then(({ data: { article } }) => {
+      setSingleArticle(article);
+      setLoading(false);
+    });
   }, []);
 
   if (loading) return <Loading />;
-  console.log(singleArticle);
+
   return (
     <div className="container">
       <div className="row">
@@ -48,21 +42,7 @@ export const SingleArticleDisplay = () => {
           </Card>
         </div>
       </div>
-      <div className="mb-3">
-        <p>Comments</p>
-      </div>
-      <div className="row">
-        {commentsForArticle.map((comment) => {
-          return (
-            <div
-              key={comment.comment_id}
-              className="col-12 d-flex justify-content-center mb-3"
-            >
-              <CommendCard comment={comment} />
-            </div>
-          );
-        })}
-      </div>
+      <CommentDisplay articleId={article_id} />
     </div>
   );
 };
