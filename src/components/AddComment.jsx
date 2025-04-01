@@ -41,7 +41,7 @@ export const AddComment = ({ articleId, setCommentPosted }) => {
   };
 
   return (
-    <Card className="border-0">
+    <Card className="border-0 card-width">
       <form onSubmit={handleSubmit} className="position-relative">
         <textarea
           className="form-control mb-2"

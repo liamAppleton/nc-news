@@ -20,7 +20,7 @@ export const CommentDisplay = ({ articleId }) => {
 
   return (
     <>
-      <div className="d-flex justify-content-between position-relative">
+      <div className="d-flex justify-content-between position-relative card-width">
         <p>Comments</p>
         {commentPosted && (
           <p

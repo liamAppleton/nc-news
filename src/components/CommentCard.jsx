@@ -14,7 +14,7 @@ export const CommentCard = ({ comment }) => {
   }, []);
 
   return (
-    <Card style={{ width: '100%' }}>
+    <Card className="card-width">
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted">
           <span>

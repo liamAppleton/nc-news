@@ -25,7 +25,7 @@ export const SingleArticleDisplay = () => {
     <div className="container">
       <div className="row">
         <div className="col-12 d-flex justify-content-center mb-5">
-          <Card style={{ width: '100%' }}>
+          <Card className="card-width">
             <Card.Img variant="top" src={singleArticle.article_img_url} />
             <Card.Body>
               <Card.Title>{singleArticle.title}</Card.Title>
