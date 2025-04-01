@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Loading } from './Loading';
 import { CommendCard } from './CommendCard';
+import { Vote } from './Vote';
 import { getArticleById, getCommentsByArticleId } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
@@ -26,7 +26,7 @@ export const SingleArticleDisplay = () => {
   }, []);
 
   if (loading) return <Loading />;
-
+  console.log(singleArticle);
   return (
     <div className="container">
       <div className="row">
@@ -40,7 +40,10 @@ export const SingleArticleDisplay = () => {
                 <span>{dateFormatter(new Date(singleArticle.created_at))}</span>
               </Card.Text>
               <Card.Text>{singleArticle.body}</Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Vote
+                id={singleArticle.article_id}
+                votes={singleArticle.votes || 0}
+              />
             </Card.Body>
           </Card>
         </div>

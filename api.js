@@ -20,7 +20,9 @@ const getCommentsByArticleId = async (articleId) => {
 };
 
 const patchVotesArticle = async (articleId, votes) => {
-  await apiClient.patch(`/articles/${articleId}`, { votes });
+  await apiClient.patch(`/articles/${articleId}`, {
+    inc_votes: votes,
+  });
 };
 
 export {
