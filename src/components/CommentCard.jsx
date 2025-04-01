@@ -1,6 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import { dateFormatter } from '../../utils/utils';
 import { Vote } from './Vote';
+import { DeleteButton } from './DeleteButton';
 import { useEffect, useState } from 'react';
 import { getUser } from '../../api';
 
@@ -29,11 +30,15 @@ export const CommentCard = ({ comment }) => {
           {'   '} {dateFormatter(new Date(comment.created_at))}
         </Card.Subtitle>
         <Card.Text>{comment.body}</Card.Text>
-        <Vote
-          id={comment.comment_id}
-          votes={comment.votes}
-          componentName={'CommentCard'}
-        />
+        <div className="d-flex justify-content-between">
+          <Vote
+            id={comment.comment_id}
+            votes={comment.votes}
+            componentName={'CommentCard'}
+          />
+
+          <DeleteButton />
+        </div>
       </Card.Body>
     </Card>
   );
