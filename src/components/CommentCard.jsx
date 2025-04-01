@@ -2,11 +2,13 @@ import Card from 'react-bootstrap/Card';
 import { dateFormatter } from '../../utils/utils';
 import { Vote } from './Vote';
 import { DeleteButton } from './DeleteButton';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { getUser } from '../../api';
+import { UserContext } from '../contexts/User';
 
 export const CommentCard = ({ comment }) => {
   const [userPic, setUserPic] = useState('');
+  const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     getUser(comment.author).then(({ data: { user } }) => {
@@ -36,8 +38,9 @@ export const CommentCard = ({ comment }) => {
             votes={comment.votes}
             componentName={'CommentCard'}
           />
-
-          <DeleteButton />
+          {loggedInUser === comment.author && (
+            <DeleteButton commentId={comment.comment_id} />
+          )}
         </div>
       </Card.Body>
     </Card>

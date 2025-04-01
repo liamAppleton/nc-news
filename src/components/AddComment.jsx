@@ -1,10 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import { UserContext } from '../contexts/User';
+import { CommentContext } from '../contexts/Comments';
 import { useContext, useState } from 'react';
 import { postComment } from '../../api';
 
-export const AddComment = ({ articleId, setCommentPosted }) => {
+export const AddComment = ({ articleId }) => {
   const { loggedInUser } = useContext(UserContext);
+  const { setCommentsUpdated } = useContext(CommentContext);
   const [newComment, setNewComment] = useState({
     body: '',
     author: loggedInUser,
@@ -27,8 +29,8 @@ export const AddComment = ({ articleId, setCommentPosted }) => {
 
     postComment(articleId, newComment)
       .then(() => {
-        setCommentPosted(true);
-        setTimeout(() => setCommentPosted(false), 1000);
+        setCommentsUpdated(true);
+        setTimeout(() => setCommentsUpdated(false), 1000);
         setNewComment({
           body: '',
           author: loggedInUser,
