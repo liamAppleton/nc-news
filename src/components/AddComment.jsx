@@ -3,12 +3,13 @@ import { UserContext } from '../contexts/User';
 import { useContext, useState } from 'react';
 import { postComment } from '../../api';
 
-export const AddComment = ({ articleId }) => {
+export const AddComment = ({ articleId, setCommentPosted }) => {
   const { loggedInUser } = useContext(UserContext);
   const [newComment, setNewComment] = useState({
     body: '',
     author: loggedInUser,
   });
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setNewComment((prevComment) => {
@@ -18,13 +19,25 @@ export const AddComment = ({ articleId }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postComment(articleId, newComment).then(() => {
-      setNewComment({
-        body: '',
-        author: loggedInUser,
+    if (newComment.body.length === 0) {
+      setError('Comment cannot be empty');
+      setTimeout(() => setError(null), 2000);
+      return;
+    }
+
+    postComment(articleId, newComment)
+      .then(() => {
+        setCommentPosted(true);
+        setTimeout(() => setCommentPosted(false), 1000);
+        setNewComment({
+          body: '',
+          author: loggedInUser,
+        });
+      })
+      .catch(() => {
+        setError('Something went wrong');
+        setTimeout(() => setError(null), 2000);
       });
-      console.log('comment posted!');
-    });
   };
 
   return (
@@ -38,6 +51,17 @@ export const AddComment = ({ articleId }) => {
           value={newComment.body}
           onChange={handleChange}
         />
+        <p
+          className="text-danger position-absolute m-0"
+          style={{
+            top: '70%',
+            left: '115px',
+            transform: 'translateY(-50%)',
+            fontSize: '0.8rem',
+          }}
+        >
+          {error}
+        </p>
         <button
           type="submit"
           className="btn btn-primary position-absolute"

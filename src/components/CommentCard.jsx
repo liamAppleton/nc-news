@@ -18,7 +18,7 @@ export const CommentCard = ({ comment }) => {
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted">
           <span>
-            <img src={userPic} alt={comment.author} className="w-25" />
+            <img src={userPic || null} alt={comment.author} className="w-25" />
           </span>
           {comment.author} {dateFormatter(new Date(comment.created_at))}
         </Card.Subtitle>
