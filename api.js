@@ -25,9 +25,28 @@ const patchVotesArticle = async (articleId, votes) => {
   });
 };
 
+const patchVotesComment = async (commentId, votes) => {
+  await apiClient.patch(`/comments/${commentId}`, { inc_votes: votes });
+};
+
+const postComment = async (articleId, { author, body }) => {
+  await apiClient.post(`/articles/${articleId}/comments`, {
+    username: author,
+    body: body,
+  });
+};
+
+const getUser = async (username) => {
+  const data = apiClient.get(`/users/${username}`);
+  return data;
+};
+
 export {
   getArticles,
   getArticleById,
   getCommentsByArticleId,
   patchVotesArticle,
+  patchVotesComment,
+  postComment,
+  getUser,
 };
