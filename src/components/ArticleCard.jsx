@@ -1,16 +1,31 @@
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';
+import { Loading } from './Loading';
+import { getArticleById } from '../../api';
+import { dateFormatter } from '../../utils/utils';
 
-export const ArticleCard = ({ article }) => {
+export const ArticleCard = ({ articleId }) => {
+  const [article, setArticle] = useState({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getArticleById(articleId).then(({ data: { article } }) => {
+      setArticle(article);
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) return <Loading />;
+
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '100%' }}>
       <Card.Img variant="top" src={article.article_img_url} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
         <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          {article.author} {dateFormatter(new Date(article.created_at))}
         </Card.Text>
         <Link to={`/articles/${article.article_id}`}>
           <Button variant="primary">View article</Button>

@@ -20,7 +20,7 @@ export const ArticleDisplay = () => {
     );
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'ArticleDisplay'} />;
 
   return (
     <div className="container">
@@ -29,9 +29,9 @@ export const ArticleDisplay = () => {
           return (
             <div
               key={article.article_id}
-              className="col-12 d-flex justify-content-center"
+              className="col-12 d-flex justify-content-center mb-3"
             >
-              <ArticleCard article={article} />
+              <ArticleCard articleId={article.article_id} />
             </div>
           );
         })}
