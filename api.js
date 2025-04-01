@@ -25,7 +25,7 @@ const patchVotesArticle = async (articleId, votes) => {
   });
 };
 
-const patchCommentVotes = async (commentId, votes) => {
+const patchVotesComment = async (commentId, votes) => {
   await apiClient.patch(`/comments/${commentId}`, { inc_votes: votes });
 };
 
@@ -34,5 +34,5 @@ export {
   getArticleById,
   getCommentsByArticleId,
   patchVotesArticle,
-  patchCommentVotes,
+  patchVotesComment,
 };
