@@ -31,7 +31,7 @@ export const SingleArticleDisplay = () => {
     <div className="container">
       <div className="row">
         <div className="col-12 d-flex justify-content-center">
-          <Card style={{ width: '18rem' }}>
+          <Card style={{ width: '100%' }}>
             <Card.Img variant="top" src={singleArticle.article_img_url} />
             <Card.Body>
               <Card.Title>{singleArticle.title}</Card.Title>
