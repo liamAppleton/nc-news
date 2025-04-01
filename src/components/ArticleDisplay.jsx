@@ -20,7 +20,7 @@ export const ArticleDisplay = () => {
     );
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'ArticleDisplay'} />;
 
   return (
     <div className="container">
