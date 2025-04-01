@@ -36,6 +36,11 @@ const postComment = async (articleId, { author, body }) => {
   });
 };
 
+const getUser = async (username) => {
+  const data = apiClient.get(`/users/${username}`);
+  return data;
+};
+
 export {
   getArticles,
   getArticleById,
@@ -43,4 +48,5 @@ export {
   patchVotesArticle,
   patchVotesComment,
   postComment,
+  getUser,
 };
