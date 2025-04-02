@@ -2,7 +2,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { themeToggle } from '../../utils/utils';
 
 export const Header = ({ searchParams, setSearchParams }) => {
   const handleChange = (sortBy, direction) => {
@@ -65,6 +67,12 @@ export const Header = ({ searchParams, setSearchParams }) => {
               </NavDropdown>
               <Nav.Item className="d-flex align-items-center ms-1 fs-6"></Nav.Item>
             </Nav>
+            <Form.Check
+              type="switch"
+              id="custom-switch"
+              label="Theme"
+              onClick={themeToggle}
+            />
           </Navbar.Collapse>
         </Container>
       </Navbar>
