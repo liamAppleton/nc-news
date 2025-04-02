@@ -4,12 +4,10 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { SortByForm } from './SortByForm';
-import { useState } from 'react';
 
 export const Header = () => {
   return (
     <>
-      <SortByForm />
       <Navbar
         expand="sm"
         className="bg-body-tertiary position-sticky top-0 mb-4"
@@ -31,6 +29,17 @@ export const Header = () => {
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/?topic=cooking">
                   Cooking
+                </NavDropdown.Item>
+              </NavDropdown>
+              <NavDropdown title="Sort by" id="basic-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/?sort_by=date">
+                  Date
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/?sort_by=comment_count">
+                  Comments
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/?sort_by=votes">
+                  Votes
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
