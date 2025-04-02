@@ -40,8 +40,11 @@ export const SingleArticleDisplay = () => {
             <Card.Body>
               <Card.Title>{singleArticle.title}</Card.Title>
               <Card.Text className="fst-italic">
-                {singleArticle.author}{' '}
-                <span>{dateFormatter(new Date(singleArticle.created_at))}</span>
+                {singleArticle.author}
+                {' • '}
+                <span classname="fst-italic">
+                  {dateFormatter(new Date(singleArticle.created_at))}
+                </span>
               </Card.Text>
               <Card.Text>{singleArticle.body}</Card.Text>
               <div className="d-flex align-items-center gap-3">

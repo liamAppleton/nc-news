@@ -24,8 +24,12 @@ export const ArticleCard = ({ articleId }) => {
       <Card.Img variant="top" src={article.article_img_url} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
-        <Card.Text>
-          {article.author} {dateFormatter(new Date(article.created_at))}
+        <Card.Text className="fst-italic">
+          {article.author}
+          {' • '}
+          <span classname="fst-italic">
+            {dateFormatter(new Date(article.created_at))}
+          </span>
         </Card.Text>
         <div className="d-flex align-items-center gap-3">
           <Vote id={article.article_id} votes={article.votes} />
