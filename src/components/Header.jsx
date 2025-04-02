@@ -32,15 +32,31 @@ export const Header = () => {
               </NavDropdown>
               <NavDropdown title="Sort by" id="basic-nav-dropdown">
                 <NavDropdown.Item as={Link} to="/?sort_by=created_at">
-                  Date
+                  {'Date (oldest)'}
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/?sort_by=created_at&order=desc"
+                >
+                  {'Date (most recent)'}
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/?sort_by=comment_count">
-                  Comments
+                  {'Comments (lowest)'}
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  as={Link}
+                  to="/?sort_by=comment_count&order=desc"
+                >
+                  {'Comments (highest)'}
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/?sort_by=votes">
-                  Votes
+                  {'Votes (lowest)'}
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/?sort_by=votes&order=desc">
+                  {'Votes (highest)'}
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Item className="d-flex align-items-center ms-1 fs-6"></Nav.Item>
             </Nav>
           </Navbar.Collapse>
         </Container>
