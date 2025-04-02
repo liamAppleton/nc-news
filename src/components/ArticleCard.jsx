@@ -17,7 +17,7 @@ export const ArticleCard = ({ articleId }) => {
     });
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'Card'} />;
 
   return (
     <Card className="card-width">

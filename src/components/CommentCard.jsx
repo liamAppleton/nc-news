@@ -2,6 +2,7 @@ import Card from 'react-bootstrap/Card';
 import { dateFormatter } from '../../utils/utils';
 import { Vote } from './Vote';
 import { DeleteButton } from './DeleteButton';
+import { Loading } from './Loading';
 import { useEffect, useState, useContext } from 'react';
 import { getUser } from '../../api';
 import { UserContext } from '../contexts/User';

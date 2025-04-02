@@ -19,7 +19,7 @@ export const SingleArticleDisplay = () => {
     });
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'Card'} />;
 
   return (
     <div className="container">

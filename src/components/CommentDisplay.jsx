@@ -20,7 +20,7 @@ export const CommentDisplay = ({ articleId }) => {
     });
   }, [commentsUpdated]);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'Card'} />;
 
   return (
     <>
