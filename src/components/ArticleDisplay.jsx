@@ -12,9 +12,10 @@ export const ArticleDisplay = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const topicQuery = searchParams.get('topic');
+  const sortByQuery = searchParams.get('sort_by');
 
   useEffect(() => {
-    getArticles(topicQuery)
+    getArticles(topicQuery, sortByQuery)
       .then(
         ({
           data: {
@@ -29,7 +30,7 @@ export const ArticleDisplay = () => {
       .catch(() => {
         setError(true);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery]);
 
   if (error) return <ErrorCard />;
 

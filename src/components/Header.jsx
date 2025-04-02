@@ -3,7 +3,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-import { SortByForm } from './SortByForm';
 
 export const Header = () => {
   return (
@@ -32,7 +31,7 @@ export const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Sort by" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/?sort_by=date">
+                <NavDropdown.Item as={Link} to="/?sort_by=created_at">
                   Date
                 </NavDropdown.Item>
                 <NavDropdown.Item as={Link} to="/?sort_by=comment_count">
