@@ -23,19 +23,20 @@ export const ArticleDisplay = () => {
         }) => {
           setArticles(rows);
           setLoading(false);
+          setError(false);
         }
       )
       .catch(() => {
         setError(true);
-        setTimeout(() => setError(false), 2000);
       });
   }, [topicQuery]);
+
+  if (error) return <ErrorCard />;
 
   if (loading) return <Loading componentName={'ArticleDisplay'} />;
 
   return (
     <div className="container">
-      {error && <ErrorCard />}
       <div className="row">
         {articles.map((article) => {
           return (
