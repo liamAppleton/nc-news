@@ -1,19 +1,33 @@
 import { MdDeleteOutline } from 'react-icons/md';
 import { deleteComment } from '../../api';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { CommentsContext } from '../contexts/Comments';
 
-export const DeleteButton = ({ commentId }) => {
+export const DeleteButton = ({ commentId, setDeleted }) => {
   const { setCommentsUpdated } = useContext(CommentsContext);
+  const [error, setError] = useState(false);
+
   const handleClick = () => {
-    deleteComment(commentId).then(() => {
-      setCommentsUpdated(true);
-      setTimeout(() => setCommentsUpdated(false), 1000);
-    }); //! change CommentContext to be an object with the component
+    setDeleted(true);
+    deleteComment(commentId)
+      .then(() => {
+        setCommentsUpdated('delete');
+        setTimeout(() => setCommentsUpdated(null), 1000);
+      })
+      .catch(() => {
+        setDeleted(false);
+        setError(true);
+        setTimeout(() => setError(false), 2000);
+      });
   };
 
   return (
-    <div className="d-flex align-items-center">
+    <div className="d-flex align-items-center gap-1">
+      {error && (
+        <p className="text-danger m-0" style={{ fontSize: '0.8rem' }}>
+          Unable to delete
+        </p>
+      )}
       <MdDeleteOutline size={20} onClick={handleClick} />
     </div>
   );

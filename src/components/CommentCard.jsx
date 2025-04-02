@@ -8,6 +8,7 @@ import { UserContext } from '../contexts/User';
 
 export const CommentCard = ({ comment }) => {
   const [userPic, setUserPic] = useState('');
+  const [deleted, setDeleted] = useState(false);
   const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -15,6 +16,13 @@ export const CommentCard = ({ comment }) => {
       setUserPic(user.avatar_url);
     });
   }, []);
+
+  if (deleted)
+    return (
+      <Card className="card-width text-muted">
+        <Card.Body>Comment deleted</Card.Body>
+      </Card>
+    );
 
   return (
     <Card className="card-width">
@@ -39,7 +47,10 @@ export const CommentCard = ({ comment }) => {
             componentName={'CommentCard'}
           />
           {loggedInUser === comment.author && (
-            <DeleteButton commentId={comment.comment_id} />
+            <DeleteButton
+              commentId={comment.comment_id}
+              setDeleted={setDeleted}
+            />
           )}
         </div>
       </Card.Body>
