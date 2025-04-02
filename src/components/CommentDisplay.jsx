@@ -4,10 +4,13 @@ import { CommentCard } from './CommentCard';
 import { AddComment } from './AddComment';
 import { Loading } from './Loading';
 import { getCommentsByArticleId } from '../../api';
+import Card from 'react-bootstrap/Card';
+import Spinner from 'react-bootstrap/Spinner';
 
 export const CommentDisplay = ({ articleId }) => {
   const [commentsForArticle, setCommentsForArticle] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [postingComment, setPostingComment] = useState(false);
   const { commentsUpdated } = useContext(CommentsContext);
 
   useEffect(() => {
@@ -33,8 +36,20 @@ export const CommentDisplay = ({ articleId }) => {
         )}
       </div>
       <div className="mb-3">
-        <AddComment articleId={articleId} />
+        <AddComment
+          articleId={articleId}
+          setPostingComment={setPostingComment}
+        />
       </div>
+      {postingComment && (
+        <Card className="card-width text-muted mb-3">
+          <Card.Body className="d-flex align-items-center gap-2">
+            <p className="m-0">Posting comment</p>
+            <Spinner animation="border" size="sm" />
+          </Card.Body>
+        </Card>
+      )}
+
       <div className="row">
         {commentsForArticle.map((comment) => {
           return (

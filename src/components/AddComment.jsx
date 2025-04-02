@@ -4,7 +4,7 @@ import { CommentsContext } from '../contexts/Comments';
 import { useContext, useState } from 'react';
 import { postComment } from '../../api';
 
-export const AddComment = ({ articleId }) => {
+export const AddComment = ({ articleId, setPostingComment }) => {
   const { loggedInUser } = useContext(UserContext);
   const { setCommentsUpdated } = useContext(CommentsContext);
   const [newComment, setNewComment] = useState({
@@ -27,8 +27,11 @@ export const AddComment = ({ articleId }) => {
       return;
     }
 
+    setPostingComment(true);
+
     postComment(articleId, newComment)
       .then(() => {
+        setPostingComment(false);
         setCommentsUpdated('post');
         setTimeout(() => setCommentsUpdated(null), 1000);
         setNewComment({
@@ -37,6 +40,7 @@ export const AddComment = ({ articleId }) => {
         });
       })
       .catch(() => {
+        setPostingComment(false);
         setError('Something went wrong');
         setTimeout(() => setError(null), 2000);
       });
