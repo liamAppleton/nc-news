@@ -17,10 +17,10 @@ export const ArticleCard = ({ articleId }) => {
     });
   }, []);
 
-  if (loading) return <Loading />;
+  if (loading) return <Loading componentName={'Card'} />;
 
   return (
-    <Card style={{ width: '100%' }}>
+    <Card className="card-width">
       <Card.Img variant="top" src={article.article_img_url} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>

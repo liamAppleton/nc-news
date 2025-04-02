@@ -1,10 +1,16 @@
 import Card from 'react-bootstrap/Card';
 import { UserContext } from '../contexts/User';
+import { CommentsContext } from '../contexts/Comments';
 import { useContext, useState } from 'react';
 import { postComment } from '../../api';
 
-export const AddComment = ({ articleId, setCommentPosted }) => {
+export const AddComment = ({
+  articleId,
+  postingComment,
+  setPostingComment,
+}) => {
   const { loggedInUser } = useContext(UserContext);
+  const { setCommentsUpdated } = useContext(CommentsContext);
   const [newComment, setNewComment] = useState({
     body: '',
     author: loggedInUser,
@@ -19,29 +25,27 @@ export const AddComment = ({ articleId, setCommentPosted }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (newComment.body.length === 0) {
-      setError('Comment cannot be empty');
-      setTimeout(() => setError(null), 2000);
-      return;
-    }
+    setPostingComment(true);
 
     postComment(articleId, newComment)
       .then(() => {
-        setCommentPosted(true);
-        setTimeout(() => setCommentPosted(false), 1000);
+        setPostingComment(false);
+        setCommentsUpdated('post');
+        setTimeout(() => setCommentsUpdated(null), 1000);
         setNewComment({
           body: '',
           author: loggedInUser,
         });
       })
       .catch(() => {
+        setPostingComment(false);
         setError('Something went wrong');
         setTimeout(() => setError(null), 2000);
       });
   };
 
   return (
-    <Card className="border-0">
+    <Card className="border-0 card-width">
       <form onSubmit={handleSubmit} className="position-relative">
         <textarea
           className="form-control mb-2"
@@ -66,6 +70,7 @@ export const AddComment = ({ articleId, setCommentPosted }) => {
           type="submit"
           className="btn btn-primary position-absolute"
           style={{ top: '70%', right: '10px', transform: 'translateY(-50%)' }}
+          disabled={postingComment || newComment.body === '' ? true : false}
         >
           Post
         </button>

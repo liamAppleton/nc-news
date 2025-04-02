@@ -27,10 +27,7 @@ export const ArticleDisplay = () => {
       <div className="row">
         {articles.map((article) => {
           return (
-            <div
-              key={article.article_id}
-              className="col-12 d-flex justify-content-center mb-3"
-            >
+            <div key={article.article_id} className="col-12 mb-3">
               <ArticleCard articleId={article.article_id} />
             </div>
           );

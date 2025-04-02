@@ -36,6 +36,10 @@ const postComment = async (articleId, { author, body }) => {
   });
 };
 
+const deleteComment = async (commentId) => {
+  await apiClient.delete(`/comments/${commentId}`);
+};
+
 const getUser = async (username) => {
   const data = apiClient.get(`/users/${username}`);
   return data;
@@ -48,5 +52,6 @@ export {
   patchVotesArticle,
   patchVotesComment,
   postComment,
+  deleteComment,
   getUser,
 };
