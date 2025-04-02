@@ -11,15 +11,25 @@ export const Vote = ({ id, votes, componentName }) => {
   const [error, setError] = useState(false);
 
   const handleUpClick = () => {
-    setNewVote(upClicked ? -1 : 1);
-    setUpClicked((bool) => !bool);
-    if (downClicked) setDownClicked(false);
+    if (downClicked) {
+      setNewVote(2);
+      setUpClicked((bool) => !bool);
+      setDownClicked(false);
+    } else {
+      setNewVote(upClicked ? -1 : 1);
+      setUpClicked((bool) => !bool);
+    }
   };
 
   const handleDownClick = () => {
-    setNewVote(downClicked ? 1 : -1);
-    setDownClicked((bool) => !bool);
-    if (upClicked) setUpClicked(false);
+    if (upClicked) {
+      setNewVote(-2);
+      setDownClicked((bool) => !bool);
+      setUpClicked(false);
+    } else {
+      setNewVote(downClicked ? 1 : -1);
+      setDownClicked((bool) => !bool);
+    }
   };
 
   useEffect(() => {
