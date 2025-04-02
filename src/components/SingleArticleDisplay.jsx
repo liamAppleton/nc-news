@@ -5,6 +5,7 @@ import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 import { CommentDisplay } from './CommentDisplay';
 import { Vote } from './Vote';
+import { CommentCount } from './CommentCount';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
@@ -43,10 +44,13 @@ export const SingleArticleDisplay = () => {
                 <span>{dateFormatter(new Date(singleArticle.created_at))}</span>
               </Card.Text>
               <Card.Text>{singleArticle.body}</Card.Text>
-              <Vote
-                id={singleArticle.article_id}
-                votes={singleArticle.votes || 0}
-              />
+              <div className="d-flex align-items-center gap-3">
+                <Vote
+                  id={singleArticle.article_id}
+                  votes={singleArticle.votes}
+                />
+                <CommentCount article={singleArticle} />
+              </div>
             </Card.Body>
           </Card>
         </div>
