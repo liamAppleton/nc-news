@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
-import Card from 'react-bootstrap/Card';
+import { ErrorCard } from './ErrorCard';
 
 export const ArticleDisplay = () => {
   const [articles, setArticles] = useState([]);
@@ -35,13 +35,7 @@ export const ArticleDisplay = () => {
 
   return (
     <div className="container">
-      {error && (
-        <Card className="card-width d-flex align-items-center mb-3 p-1">
-          <Card.Text className="text-danger">
-            Oops! Something went wrong
-          </Card.Text>
-        </Card>
-      )}
+      {error && <ErrorCard />}
       <div className="row">
         {articles.map((article) => {
           return (
