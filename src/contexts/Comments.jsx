@@ -1,13 +1,13 @@
 import { createContext, useState } from 'react';
 
-export const CommentContext = createContext();
+export const CommentsContext = createContext();
 
-export const CommentProvider = ({ children }) => {
+export const CommentsProvider = ({ children }) => {
   const [commentsUpdated, setCommentsUpdated] = useState(false);
 
   return (
-    <CommentContext.Provider value={{ commentsUpdated, setCommentsUpdated }}>
+    <CommentsContext.Provider value={{ commentsUpdated, setCommentsUpdated }}>
       {children}
-    </CommentContext.Provider>
+    </CommentsContext.Provider>
   );
 };

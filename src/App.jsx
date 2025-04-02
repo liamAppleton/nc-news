@@ -4,11 +4,11 @@ import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
 import { Header } from './components/Header';
 import { UserProvider } from './contexts/User';
-import { CommentProvider } from './contexts/Comments';
+import { CommentsProvider } from './contexts/Comments';
 
 function App() {
   return (
-    <CommentProvider>
+    <CommentsProvider>
       <UserProvider>
         <Header />
         <Routes>
@@ -19,7 +19,7 @@ function App() {
           />
         </Routes>
       </UserProvider>
-    </CommentProvider>
+    </CommentsProvider>
   );
 }
 

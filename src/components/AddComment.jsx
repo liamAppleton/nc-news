@@ -1,12 +1,12 @@
 import Card from 'react-bootstrap/Card';
 import { UserContext } from '../contexts/User';
-import { CommentContext } from '../contexts/Comments';
+import { CommentsContext } from '../contexts/Comments';
 import { useContext, useState } from 'react';
 import { postComment } from '../../api';
 
 export const AddComment = ({ articleId }) => {
   const { loggedInUser } = useContext(UserContext);
-  const { setCommentsUpdated } = useContext(CommentContext);
+  const { setCommentsUpdated } = useContext(CommentsContext);
   const [newComment, setNewComment] = useState({
     body: '',
     author: loggedInUser,

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { CommentContext } from '../contexts/Comments';
+import { CommentsContext } from '../contexts/Comments';
 import { CommentCard } from './CommentCard';
 import { AddComment } from './AddComment';
 import { Loading } from './Loading';
@@ -8,7 +8,7 @@ import { getCommentsByArticleId } from '../../api';
 export const CommentDisplay = ({ articleId }) => {
   const [commentsForArticle, setCommentsForArticle] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { commentsUpdated } = useContext(CommentContext);
+  const { commentsUpdated } = useContext(CommentsContext);
 
   useEffect(() => {
     getCommentsByArticleId(articleId).then(({ data: { comments } }) => {
