@@ -4,7 +4,16 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
-export const Header = () => {
+export const Header = ({ searchParams, setSearchParams }) => {
+  const handleChange = (sortBy, direction) => {
+    const newParams = new URLSearchParams(searchParams);
+    if (newParams.has('order')) newParams.delete('order');
+
+    newParams.set('sort_by', sortBy);
+    if (direction) newParams.set('order', direction);
+    setSearchParams(newParams);
+  };
+
   return (
     <>
       <Navbar
@@ -31,28 +40,26 @@ export const Header = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Sort by" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/?sort_by=created_at">
+                <NavDropdown.Item onClick={() => handleChange('created_at')}>
                   {'Date (oldest)'}
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  as={Link}
-                  to="/?sort_by=created_at&order=desc"
+                  onClick={() => handleChange('created_at', 'desc')}
                 >
                   {'Date (most recent)'}
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/?sort_by=comment_count">
+                <NavDropdown.Item onClick={() => handleChange('comment_count')}>
                   {'Comments (lowest)'}
                 </NavDropdown.Item>
                 <NavDropdown.Item
-                  as={Link}
-                  to="/?sort_by=comment_count&order=desc"
+                  onClick={() => handleChange('comment_count', 'desc')}
                 >
                   {'Comments (highest)'}
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/?sort_by=votes">
+                <NavDropdown.Item onClick={() => handleChange('votes')}>
                   {'Votes (lowest)'}
                 </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/?sort_by=votes&order=desc">
+                <NavDropdown.Item onClick={() => handleChange('votes', 'desc')}>
                   {'Votes (highest)'}
                 </NavDropdown.Item>
               </NavDropdown>
