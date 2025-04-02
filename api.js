@@ -4,9 +4,9 @@ const apiClient = axios.create({
   baseURL: 'https://nc-news-app-e2hd.onrender.com/api',
 });
 
-const getArticles = async (topic, sortBy) => {
+const getArticles = async (topic, sortBy, order) => {
   const data = await apiClient.get('/articles', {
-    params: { topic: topic, sort_by: sortBy },
+    params: { topic: topic, sort_by: sortBy, order: order },
   });
   return data;
 };
