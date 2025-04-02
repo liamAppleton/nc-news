@@ -68,6 +68,7 @@ export const Vote = ({ id, votes, componentName }) => {
         <BiUpvote
           size={20}
           color={upClicked ? '#ff4500' : '#808080'}
+          style={{ cursor: 'pointer' }}
           onClick={handleUpClick}
         />
         <p className="fs-6 m-0 user-select-none" style={{ cursor: 'default' }}>
@@ -76,6 +77,7 @@ export const Vote = ({ id, votes, componentName }) => {
         <BiDownvote
           size={20}
           color={downClicked ? '#7193ff' : '#808080'}
+          style={{ cursor: 'pointer' }}
           onClick={handleDownClick}
         />
       </div>
