@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Loading } from './Loading';
+import { ErrorCard } from './ErrorCard';
 import { CommentDisplay } from './CommentDisplay';
 import { Vote } from './Vote';
 import { getArticleById } from '../../api';
@@ -10,14 +11,22 @@ import { dateFormatter } from '../../utils/utils';
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
   const { article_id } = useParams();
 
   useEffect(() => {
-    getArticleById(article_id).then(({ data: { article } }) => {
-      setSingleArticle(article);
-      setLoading(false);
-    });
+    getArticleById(article_id)
+      .then(({ data: { article } }) => {
+        setSingleArticle(article);
+        setLoading(false);
+        setError(false);
+      })
+      .catch(() => {
+        setError(true);
+      });
   }, []);
+
+  if (error) return <ErrorCard />;
 
   if (loading) return <Loading componentName={'Card'} />;
 
