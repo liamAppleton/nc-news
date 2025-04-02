@@ -29,8 +29,8 @@ export const AddComment = ({ articleId }) => {
 
     postComment(articleId, newComment)
       .then(() => {
-        setCommentsUpdated(true);
-        setTimeout(() => setCommentsUpdated(false), 1000);
+        setCommentsUpdated('post');
+        setTimeout(() => setCommentsUpdated(null), 1000);
         setNewComment({
           body: '',
           author: loggedInUser,
