@@ -2,26 +2,20 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { SlMenu } from 'react-icons/sl';
 import { Link } from 'react-router-dom';
 import { SortByForm } from './SortByForm';
 import { useState } from 'react';
 
 export const Header = () => {
-  const [show, setShow] = useState(false);
-
-  const handleShow = () => setShow(true);
-
   return (
     <>
-      <SortByForm show={show} setShow={setShow} />
+      <SortByForm />
       <Navbar
         expand="sm"
         className="bg-body-tertiary position-sticky top-0 mb-4"
         style={{ zIndex: 1020 }}
       >
         <Container>
-          <SlMenu className="me-3 ms-0" size={20} onClick={handleShow} />
           <Navbar.Brand as={Link} to="/">
             NC News
           </Navbar.Brand>
