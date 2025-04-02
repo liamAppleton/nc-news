@@ -19,9 +19,15 @@ export const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <NavDropdown title="Topics" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Coding</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Football</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Cooking</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/?topic=coding">
+                Coding
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/?topic=football">
+                Football
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/?topic=cooking">
+                Cooking
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
