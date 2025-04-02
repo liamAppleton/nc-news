@@ -38,6 +38,7 @@ export const CommentDisplay = ({ articleId }) => {
       <div className="mb-3">
         <AddComment
           articleId={articleId}
+          postingComment={postingComment}
           setPostingComment={setPostingComment}
         />
       </div>
