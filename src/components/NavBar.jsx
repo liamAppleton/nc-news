@@ -27,11 +27,7 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
         style={{ zIndex: 1020 }}
       >
         <Container>
-          {home ? (
-            <Navbar.Brand className="logo" as={Link} to="/">
-              NC News
-            </Navbar.Brand>
-          ) : (
+          {!home && (
             <IoArrowBackOutline
               className="back-arrow"
               size={30}
