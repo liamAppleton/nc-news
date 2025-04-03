@@ -16,3 +16,7 @@
 .vote-arrow-down:hover {
   color: #7193ff !important;
  }
+
+.comment-icon:hover {
+  color: #a9a9a9 !important;
+}

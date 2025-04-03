@@ -9,7 +9,11 @@ export const CommentCount = ({ article }) => {
           to={`/articles/${article.article_id}`}
           className="d-flex align-items-center"
         >
-          <FaRegComment color={'#808080'} size={20} className="m-0" />
+          <FaRegComment
+            color={'#808080'}
+            size={20}
+            className="m-0 comment-icon"
+          />
         </Link>
         <p className="fs-6 m-0 user-select-none" style={{ cursor: 'default' }}>
           {article.comment_count}
