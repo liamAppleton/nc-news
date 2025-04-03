@@ -5,3 +5,14 @@
     margin: auto;
   }
 
+.vote-arrow {
+  cursor: pointer;
+}
+
+.vote-arrow-up:hover {
+ color: #ff4500 !important;
+}
+
+.vote-arrow-down:hover {
+  color: #7193ff !important;
+ }
