@@ -24,7 +24,7 @@ export const Header = ({ searchParams, setSearchParams, home }) => {
         style={{ zIndex: 1020 }}
       >
         <Container>
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand className="logo" as={Link} to="/">
             NC News
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
