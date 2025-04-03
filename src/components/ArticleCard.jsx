@@ -23,7 +23,11 @@ export const ArticleCard = ({ articleId }) => {
   return (
     <Card className="card-width">
       <Link to={`/articles/${articleId}`}>
-        <Card.Img variant="top" src={article.article_img_url} />
+        <Card.Img
+          className="article-image"
+          variant="top"
+          src={article.article_img_url}
+        />
       </Link>
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
