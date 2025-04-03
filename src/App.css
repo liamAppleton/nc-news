@@ -40,5 +40,12 @@
   background-color:#ff4400c9 ;
 }
  
+.back-arrow {
+  cursor: pointer;
+}
+
+.back-arrow:hover {
+  color: #FF4500 !important;
+}
 
 

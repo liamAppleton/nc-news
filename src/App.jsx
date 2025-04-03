@@ -29,7 +29,7 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<SingleArticleDisplay setHome={setHome} />}
+            element={<SingleArticleDisplay home={home} setHome={setHome} />}
           />
           <Route
             path="*"

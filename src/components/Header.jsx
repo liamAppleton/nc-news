@@ -3,10 +3,13 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { themeToggle } from '../../utils/utils';
+import { IoArrowBackOutline } from 'react-icons/io5';
 
 export const Header = ({ searchParams, setSearchParams, home }) => {
+  const navigate = useNavigate();
+
   const handleChange = (sortBy, direction) => {
     const newParams = new URLSearchParams(searchParams);
     if (newParams.has('order')) newParams.delete('order');
@@ -24,9 +27,18 @@ export const Header = ({ searchParams, setSearchParams, home }) => {
         style={{ zIndex: 1020 }}
       >
         <Container>
-          <Navbar.Brand className="logo" as={Link} to="/">
-            NC News
-          </Navbar.Brand>
+          {home ? (
+            <Navbar.Brand className="logo" as={Link} to="/">
+              NC News
+            </Navbar.Brand>
+          ) : (
+            <IoArrowBackOutline
+              className="back-arrow"
+              size={30}
+              onClick={() => navigate(-1)}
+            />
+          )}
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {home && (
