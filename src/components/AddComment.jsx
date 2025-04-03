@@ -68,7 +68,7 @@ export const AddComment = ({
         </p>
         <button
           type="submit"
-          className="btn btn-primary position-absolute"
+          className="btn logo position-absolute"
           style={{ top: '70%', right: '10px', transform: 'translateY(-50%)' }}
           disabled={postingComment || newComment.body === '' ? true : false}
         >
