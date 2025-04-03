@@ -7,7 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { themeToggle } from '../../utils/utils';
 import { IoArrowBackOutline } from 'react-icons/io5';
 
-export const Header = ({ searchParams, setSearchParams, home }) => {
+export const NavBar = ({ searchParams, setSearchParams, home }) => {
   const navigate = useNavigate();
 
   const handleChange = (sortBy, direction) => {

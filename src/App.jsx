@@ -2,7 +2,7 @@ import './App.css';
 import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
-import { Header } from './components/Header';
+import { NavBar } from './components/NavBar';
 import { ErrorCard } from './components/ErrorCard';
 import { UserProvider } from './contexts/User';
 import { CommentsProvider } from './contexts/Comments';
@@ -15,7 +15,7 @@ function App() {
   return (
     <CommentsProvider>
       <UserProvider>
-        <Header
+        <NavBar
           searchParams={searchParams}
           setSearchParams={setSearchParams}
           home={home}
