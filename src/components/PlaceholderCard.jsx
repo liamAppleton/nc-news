@@ -1,10 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import Placeholder from 'react-bootstrap/Placeholder';
 
-export const ArticlePlaceholder = () => {
+export const PlaceholderCard = () => {
   return (
     <Card className="card-width mb-3">
-      {/* <Card.Img variant="top" src="src/assets/placeholder.png" /> */}
       <Card.Body>
         <Placeholder as={Card.Title} animation="glow">
           <Placeholder xs={6} />

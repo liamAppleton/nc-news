@@ -3,7 +3,6 @@ import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
-import { ArticlePlaceholder } from './ArticlePlaceholder';
 
 export const ArticleDisplay = ({ searchParams, setHome }) => {
   const [articles, setArticles] = useState([]);
@@ -35,7 +34,7 @@ export const ArticleDisplay = ({ searchParams, setHome }) => {
 
   if (error) return <ErrorCard error={error} />;
 
-  if (loading) return <Loading componentName={'ArticleDisplay'} />;
+  if (loading) return <Loading />;
 
   return (
     <div className="container">

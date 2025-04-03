@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Vote } from './Vote';
 import { CommentCount } from './CommentCount';
-import { Loading } from './Loading';
-import { ArticlePlaceholder } from './ArticlePlaceholder';
+import { PlaceholderCard } from './PlaceholderCard';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
@@ -19,7 +18,7 @@ export const ArticleCard = ({ articleId }) => {
     });
   }, []);
 
-  if (loading) return <ArticlePlaceholder />;
+  if (loading) return <PlaceholderCard />;
 
   return (
     <Card className="card-width">

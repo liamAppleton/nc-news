@@ -2,10 +2,10 @@ import { useContext, useEffect, useState } from 'react';
 import { CommentsContext } from '../contexts/Comments';
 import { CommentCard } from './CommentCard';
 import { AddComment } from './AddComment';
-import { Loading } from './Loading';
 import { getCommentsByArticleId } from '../../api';
 import Card from 'react-bootstrap/Card';
 import Spinner from 'react-bootstrap/Spinner';
+import { PlaceholderCard } from './PlaceholderCard';
 
 export const CommentDisplay = ({ articleId }) => {
   const [commentsForArticle, setCommentsForArticle] = useState([]);
@@ -20,7 +20,7 @@ export const CommentDisplay = ({ articleId }) => {
     });
   }, [commentsUpdated]);
 
-  if (loading) return <Loading componentName={'Card'} />;
+  if (loading) return <PlaceholderCard />;
 
   return (
     <>
