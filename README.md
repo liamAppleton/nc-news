@@ -1,12 +1,44 @@
-# React + Vite
+# NC News
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About this project
 
-Currently, two official plugins are available:
+NC News is a react app built as the front-end for my back-end news api:
+https://github.com/liamAppleton/nc-news-app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The design and functionality is based on the popular news site, Reddit. This is evidenced by the up/down voting system and general layout for articles and comments.
 
-## Expanding the ESLint configuration
+You can visit the app here: https://nc-hub.netlify.app/
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Features
+
+- light/dark mode toggle switch
+- vote on comments and articles
+- post comments
+- filter articles by topic
+- sort and order articles by various queries
+
+---
+
+## Setup instructions
+
+Clone down this repo using the following command:
+
+**git clone https://github.com/liamAppleton/nc-news.git**
+
+Access the directory: **cd nc-news**
+
+Install dependencies: **npm install**
+
+Run on localhost: **npm run dev**
+
+Then just follow the link in the terminal and get browsing!
+
+---
+
+_note: Node.js v23.6.0 is needed to run this application_
+
+---
+
+This portfolio project was created as part of a Digital Skills Bootcamp in Software Engineering provided by [Northcoders](https://northcoders.com/)
