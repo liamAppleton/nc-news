@@ -28,7 +28,7 @@ export const DeleteButton = ({ commentId, setDeleted }) => {
           Unable to delete
         </p>
       )}
-      <MdDeleteOutline size={20} onClick={handleClick} />
+      <MdDeleteOutline className="bin" size={20} onClick={handleClick} />
     </div>
   );
 };

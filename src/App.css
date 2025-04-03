@@ -23,5 +23,9 @@
 
 .article-image:hover {
   border: 1px solid #a9a9a9 !important;
-
 }
+
+.bin:hover {
+  color: #9E2A2F !important;
+}
+
