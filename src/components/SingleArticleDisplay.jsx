@@ -12,7 +12,7 @@ import { dateFormatter } from '../../utils/utils';
 export const SingleArticleDisplay = () => {
   const [singleArticle, setSingleArticle] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
@@ -22,12 +22,12 @@ export const SingleArticleDisplay = () => {
         setLoading(false);
         setError(false);
       })
-      .catch(() => {
-        setError(true);
+      .catch(({ response: { data } }) => {
+        setError(data);
       });
   }, []);
 
-  if (error) return <ErrorCard />;
+  if (error) return <ErrorCard error={error} />;
 
   if (loading) return <Loading componentName={'Card'} />;
 

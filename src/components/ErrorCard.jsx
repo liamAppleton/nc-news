@@ -1,9 +1,10 @@
 import Card from 'react-bootstrap/Card';
 
-export const ErrorCard = () => {
+export const ErrorCard = ({ error }) => {
   return (
     <Card className="card-width d-flex align-items-center mb-3 p-1">
-      <Card.Text className="text-danger">Oops! Something went wrong</Card.Text>
+      <Card.Title>{error.status}</Card.Title>
+      <Card.Text className="text-danger">{error.msg}</Card.Text>
     </Card>
   );
 };
