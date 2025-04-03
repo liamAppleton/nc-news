@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { Vote } from './Vote';
 import { CommentCount } from './CommentCount';
@@ -21,7 +22,9 @@ export const ArticleCard = ({ articleId }) => {
 
   return (
     <Card className="card-width">
-      <Card.Img variant="top" src={article.article_img_url} />
+      <Link to={`/articles/${articleId}`}>
+        <Card.Img variant="top" src={article.article_img_url} />
+      </Link>
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
         <Card.Text className="fst-italic">
@@ -31,6 +34,7 @@ export const ArticleCard = ({ articleId }) => {
             {dateFormatter(new Date(article.created_at))}
           </span>
         </Card.Text>
+
         <div className="d-flex align-items-center gap-3">
           <Vote id={article.article_id} votes={article.votes} />
           <CommentCount article={article} />
