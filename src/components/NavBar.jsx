@@ -29,7 +29,7 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
         <Container>
           {!home && (
             <IoArrowBackOutline
-              className="back-arrow"
+              className="brand-red"
               size={30}
               onClick={() => navigate(-1)}
             />

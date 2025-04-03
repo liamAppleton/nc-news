@@ -7,7 +7,7 @@ export const Header = () => {
     <Navbar className="bg-body-tertiary">
       <Container>
         <Link to="/" className="text-decoration-none">
-          <Navbar.Brand className="d-flex align-items-center gap-2 fs-2">
+          <Navbar.Brand className="d-flex align-items-center gap-2 fs-2 brand-red">
             <img
               alt="NC News logo"
               src="src/assets/news-favicon.png"
