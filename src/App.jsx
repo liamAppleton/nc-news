@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, useSearchParams } from 'react-router-dom';
+import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
 import { Header } from './components/Header';
@@ -22,6 +22,7 @@ function App() {
             path="/articles/:article_id"
             element={<SingleArticleDisplay />}
           />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </UserProvider>
     </CommentsProvider>
