@@ -28,7 +28,7 @@ export const CommentCard = ({ comment }) => {
   return (
     <Card className="card-width">
       <Card.Body>
-        <Card.Subtitle className="mb-2 text-muted">
+        <Card.Subtitle className="mb-2 text-muted fst-italic">
           <span>
             <img
               src={userPic || null}
@@ -38,7 +38,7 @@ export const CommentCard = ({ comment }) => {
             />
           </span>{' '}
           {comment.author}
-          {'   '} {dateFormatter(new Date(comment.created_at))}
+          {' • '} {dateFormatter(new Date(comment.created_at))}
         </Card.Subtitle>
         <Card.Text>{comment.body}</Card.Text>
         <div className="d-flex justify-content-between">

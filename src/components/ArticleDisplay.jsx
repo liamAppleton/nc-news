@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 
-export const ArticleDisplay = () => {
+export const ArticleDisplay = ({ searchParams, setSearchParams }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const topicQuery = searchParams.get('topic');
+  const sortByQuery = searchParams.get('sort_by');
+  const orderQuery = searchParams.get('order');
 
   useEffect(() => {
-    getArticles(topicQuery)
+    getArticles(topicQuery, sortByQuery, orderQuery)
       .then(
         ({
           data: {
@@ -29,7 +29,7 @@ export const ArticleDisplay = () => {
       .catch(() => {
         setError(true);
       });
-  }, [topicQuery]);
+  }, [topicQuery, sortByQuery, orderQuery]);
 
   if (error) return <ErrorCard />;
 

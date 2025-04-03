@@ -24,3 +24,11 @@ export const dateFormatter = (date) => {
   }
   return `${value} ${unit} ago`;
 };
+
+export const themeToggle = () => {
+  if (document.documentElement.getAttribute('data-bs-theme') === 'dark') {
+    document.documentElement.setAttribute('data-bs-theme', 'light');
+  } else {
+    document.documentElement.setAttribute('data-bs-theme', 'dark');
+  }
+};

@@ -67,7 +67,8 @@ export const Vote = ({ id, votes, componentName }) => {
       <div className="d-inline-flex gap-1 align-items-center border rounded-pill p-1">
         <BiUpvote
           size={20}
-          color={upClicked ? '#ff4500' : undefined}
+          color={upClicked ? '#ff4500' : '#808080'}
+          style={{ cursor: 'pointer' }}
           onClick={handleUpClick}
         />
         <p className="fs-6 m-0 user-select-none" style={{ cursor: 'default' }}>
@@ -75,7 +76,8 @@ export const Vote = ({ id, votes, componentName }) => {
         </p>
         <BiDownvote
           size={20}
-          color={downClicked ? '#7193ff' : undefined}
+          color={downClicked ? '#7193ff' : '#808080'}
+          style={{ cursor: 'pointer' }}
           onClick={handleDownClick}
         />
       </div>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
+import { Vote } from './Vote';
+import { CommentCount } from './CommentCount';
 import { Loading } from './Loading';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
@@ -24,12 +24,17 @@ export const ArticleCard = ({ articleId }) => {
       <Card.Img variant="top" src={article.article_img_url} />
       <Card.Body>
         <Card.Title>{article.title}</Card.Title>
-        <Card.Text>
-          {article.author} {dateFormatter(new Date(article.created_at))}
+        <Card.Text className="fst-italic">
+          {article.author}
+          {' • '}
+          <span classname="fst-italic">
+            {dateFormatter(new Date(article.created_at))}
+          </span>
         </Card.Text>
-        <Link to={`/articles/${article.article_id}`}>
-          <Button variant="primary">View article</Button>
-        </Link>
+        <div className="d-flex align-items-center gap-3">
+          <Vote id={article.article_id} votes={article.votes} />
+          <CommentCount article={article} />
+        </div>
       </Card.Body>
     </Card>
   );
