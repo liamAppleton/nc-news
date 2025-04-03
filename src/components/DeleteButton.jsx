@@ -23,12 +23,8 @@ export const DeleteButton = ({ commentId, setDeleted }) => {
 
   return (
     <div className="d-flex align-items-center gap-1">
-      {error && (
-        <p className="text-danger m-0" style={{ fontSize: '0.8rem' }}>
-          Unable to delete
-        </p>
-      )}
-      <MdDeleteOutline size={20} onClick={handleClick} />
+      {error && <p className="error-msg m-0">Unable to delete</p>}
+      <MdDeleteOutline className="bin" size={20} onClick={handleClick} />
     </div>
   );
 };

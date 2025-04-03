@@ -34,7 +34,7 @@ export const ArticleDisplay = ({ searchParams, setHome }) => {
 
   if (error) return <ErrorCard error={error} />;
 
-  if (loading) return <Loading componentName={'ArticleDisplay'} />;
+  if (loading) return <Loading />;
 
   return (
     <div className="container">

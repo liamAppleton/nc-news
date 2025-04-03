@@ -30,7 +30,7 @@ export const SingleArticleDisplay = ({ setHome }) => {
 
   if (error) return <ErrorCard error={error} />;
 
-  if (loading) return <Loading componentName={'Card'} />;
+  if (loading) return <Loading />;
 
   return (
     <div className="container">

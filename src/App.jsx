@@ -2,6 +2,7 @@ import './App.css';
 import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
+import { NavBar } from './components/NavBar';
 import { Header } from './components/Header';
 import { ErrorCard } from './components/ErrorCard';
 import { UserProvider } from './contexts/User';
@@ -15,7 +16,8 @@ function App() {
   return (
     <CommentsProvider>
       <UserProvider>
-        <Header
+        <Header />
+        <NavBar
           searchParams={searchParams}
           setSearchParams={setSearchParams}
           home={home}
@@ -29,7 +31,7 @@ function App() {
           />
           <Route
             path="/articles/:article_id"
-            element={<SingleArticleDisplay setHome={setHome} />}
+            element={<SingleArticleDisplay home={home} setHome={setHome} />}
           />
           <Route
             path="*"

@@ -6,17 +6,22 @@ import { Loading } from './Loading';
 import { useEffect, useState, useContext } from 'react';
 import { getUser } from '../../api';
 import { UserContext } from '../contexts/User';
+import { PlaceholderCard } from './PlaceholderCard';
 
 export const CommentCard = ({ comment }) => {
   const [userPic, setUserPic] = useState('');
+  const [loading, setLoading] = useState(true);
   const [deleted, setDeleted] = useState(false);
   const { loggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     getUser(comment.author).then(({ data: { user } }) => {
       setUserPic(user.avatar_url);
+      setLoading(false);
     });
   }, []);
+
+  if (loading) return <PlaceholderCard />;
 
   if (deleted)
     return (
@@ -26,7 +31,7 @@ export const CommentCard = ({ comment }) => {
     );
 
   return (
-    <Card className="card-width">
+    <Card className="card-width comment-card">
       <Card.Body>
         <Card.Subtitle className="mb-2 text-muted fst-italic">
           <span>
