@@ -4,7 +4,7 @@ import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 
-export const ArticleDisplay = ({ searchParams }) => {
+export const ArticleDisplay = ({ searchParams, setHome }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,6 +14,7 @@ export const ArticleDisplay = ({ searchParams }) => {
   const orderQuery = searchParams.get('order');
 
   useEffect(() => {
+    setHome(true);
     getArticles(topicQuery, sortByQuery, orderQuery)
       .then(
         ({

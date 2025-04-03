@@ -9,13 +9,14 @@ import { CommentCount } from './CommentCount';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 
-export const SingleArticleDisplay = () => {
+export const SingleArticleDisplay = ({ setHome }) => {
   const [singleArticle, setSingleArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { article_id } = useParams();
 
   useEffect(() => {
+    setHome(false);
     getArticleById(article_id)
       .then(({ data: { article } }) => {
         setSingleArticle(article);
@@ -42,7 +43,7 @@ export const SingleArticleDisplay = () => {
               <Card.Text className="fst-italic">
                 {singleArticle.author}
                 {' • '}
-                <span classname="fst-italic">
+                <span className="fst-italic">
                   {dateFormatter(new Date(singleArticle.created_at))}
                 </span>
               </Card.Text>
