@@ -20,7 +20,7 @@ export const SingleArticleDisplay = () => {
       .then(({ data: { article } }) => {
         setSingleArticle(article);
         setLoading(false);
-        setError(false);
+        setError(null);
       })
       .catch(({ response: { data } }) => {
         setError(data);
