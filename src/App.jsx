@@ -16,12 +16,7 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={
-              <ArticleDisplay
-                searchParams={searchParams}
-                setSearchParams={setSearchParams}
-              />
-            }
+            element={<ArticleDisplay searchParams={searchParams} />}
           />
           <Route
             path="/articles/:article_id"

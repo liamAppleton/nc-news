@@ -27,7 +27,7 @@ export const ArticleCard = ({ articleId }) => {
         <Card.Text className="fst-italic">
           {article.author}
           {' • '}
-          <span classname="fst-italic">
+          <span className="fst-italic">
             {dateFormatter(new Date(article.created_at))}
           </span>
         </Card.Text>

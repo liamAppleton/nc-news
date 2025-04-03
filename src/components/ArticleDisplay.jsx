@@ -4,7 +4,7 @@ import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 
-export const ArticleDisplay = ({ searchParams, setSearchParams }) => {
+export const ArticleDisplay = ({ searchParams }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
