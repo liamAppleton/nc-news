@@ -4,10 +4,10 @@ import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 
-export const ArticleDisplay = ({ searchParams, setSearchParams }) => {
+export const ArticleDisplay = ({ searchParams }) => {
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   const topicQuery = searchParams.get('topic');
   const sortByQuery = searchParams.get('sort_by');
@@ -23,15 +23,15 @@ export const ArticleDisplay = ({ searchParams, setSearchParams }) => {
         }) => {
           setArticles(rows);
           setLoading(false);
-          setError(false);
+          setError(null);
         }
       )
-      .catch(() => {
-        setError(true);
+      .catch(({ response: { data } }) => {
+        setError(data);
       });
   }, [topicQuery, sortByQuery, orderQuery]);
 
-  if (error) return <ErrorCard />;
+  if (error) return <ErrorCard error={error} />;
 
   if (loading) return <Loading componentName={'ArticleDisplay'} />;
 
