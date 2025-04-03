@@ -73,13 +73,14 @@ export const Header = ({ searchParams, setSearchParams, home }) => {
                 <Nav.Item className="d-flex align-items-center ms-1 fs-6"></Nav.Item>
               </Nav>
             )}
-
-            <Form.Check
-              type="switch"
-              id="custom-switch"
-              label="Theme"
-              onClick={themeToggle}
-            />
+            <div className="ms-auto">
+              <Form.Check
+                type="switch"
+                id="custom-switch"
+                label="Theme"
+                onClick={themeToggle}
+              />
+            </div>
           </Navbar.Collapse>
         </Container>
       </Navbar>

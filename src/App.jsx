@@ -1,5 +1,5 @@
 import './App.css';
-import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
 import { Header } from './components/Header';
