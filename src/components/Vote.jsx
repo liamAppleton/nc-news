@@ -66,7 +66,7 @@ export const Vote = ({ id, votes, componentName }) => {
     <div className="d-flex gap-3 align-items-center">
       <div className="d-inline-flex gap-1 align-items-center border rounded-pill p-1">
         <BiUpvote
-          className="vote-arrow vote-arrow-up"
+          className="arrow vote-arrow-up"
           size={20}
           color={upClicked ? '#ff4500' : '#808080'}
           onClick={handleUpClick}
@@ -75,17 +75,13 @@ export const Vote = ({ id, votes, componentName }) => {
           {optimisticVotes}
         </p>
         <BiDownvote
-          className="vote-arrow vote-arrow-down"
+          className="arrow vote-arrow-down"
           size={20}
           color={downClicked ? '#7193ff' : '#808080'}
           onClick={handleDownClick}
         />
       </div>
-      {error && (
-        <p className="text-danger m-0" style={{ fontSize: '0.8rem' }}>
-          Something went wrong
-        </p>
-      )}
+      {error && <p className="m-0 error-msg">Something went wrong</p>}
     </div>
   );
 };

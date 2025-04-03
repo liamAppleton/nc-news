@@ -55,21 +55,10 @@ export const AddComment = ({
           value={newComment.body}
           onChange={handleChange}
         />
-        <p
-          className="text-danger position-absolute m-0"
-          style={{
-            top: '70%',
-            left: '115px',
-            transform: 'translateY(-50%)',
-            fontSize: '0.8rem',
-          }}
-        >
-          {error}
-        </p>
+        <p className="position-absolute m-0 error-msg post-error">{error}</p>
         <button
           type="submit"
           className="btn post-btn position-absolute"
-          style={{ top: '70%', right: '10px', transform: 'translateY(-50%)' }}
           disabled={postingComment || newComment.body === '' ? true : false}
         >
           Post

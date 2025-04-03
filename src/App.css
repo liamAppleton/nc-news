@@ -5,7 +5,7 @@
     margin: auto;
   }
 
-.vote-arrow {
+.arrow {
   cursor: pointer;
 }
 
@@ -34,16 +34,26 @@
   background-color:#FF4500 ;
   padding: 5px;
   border-radius: 10px;
+  top: 70%;
+  right: 10px;
+  transform: translateY(-50%);
 }
 
 .post-btn:hover {
   background-color:#ff4400c9 ;
 }
- 
-.back-arrow {
-  cursor: pointer;
+
+.post-error {
+  top: 70%;
+  left: 115px;
+  transform:translateY(-50%) ;
 }
 
+.error-msg {
+  font-size: 1rem;
+  color: #e63946;
+}
+ 
 .brand-red:hover {
   color: #FF4500 !important;
 }
