@@ -3,6 +3,7 @@ import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
+import { ArticlePlaceholder } from './ArticlePlaceholder';
 
 export const ArticleDisplay = ({ searchParams, setHome }) => {
   const [articles, setArticles] = useState([]);
