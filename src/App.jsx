@@ -3,6 +3,7 @@ import { Route, Routes, Navigate, useSearchParams } from 'react-router-dom';
 import { ArticleDisplay } from './components/ArticleDisplay';
 import { SingleArticleDisplay } from './components/SingleArticleDisplay';
 import { Header } from './components/Header';
+import { ErrorCard } from './components/ErrorCard';
 import { UserProvider } from './contexts/User';
 import { CommentsProvider } from './contexts/Comments';
 
@@ -22,7 +23,13 @@ function App() {
             path="/articles/:article_id"
             element={<SingleArticleDisplay />}
           />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route
+            path="*"
+            to="/"
+            element={
+              <ErrorCard error={{ status: 404, msg: 'path not found' }} />
+            }
+          />
         </Routes>
       </UserProvider>
     </CommentsProvider>
