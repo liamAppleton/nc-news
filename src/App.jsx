@@ -30,9 +30,16 @@ function App() {
             }
           />
           <Route
+            path="/topics/:topic"
+            element={
+              <ArticleDisplay searchParams={searchParams} setHome={setHome} />
+            }
+          />
+          <Route
             path="/articles/:article_id"
             element={<SingleArticleDisplay home={home} setHome={setHome} />}
           />
+
           <Route
             path="*"
             to="/"

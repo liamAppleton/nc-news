@@ -49,13 +49,13 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
             {home && (
               <Nav className="me-auto">
                 <NavDropdown title="Topics" id="basic-nav-dropdown">
-                  <NavDropdown.Item as={Link} to="/?topic=coding">
+                  <NavDropdown.Item as={Link} to="/topics/coding">
                     Coding
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/?topic=football">
+                  <NavDropdown.Item as={Link} to="/topics/football">
                     Football
                   </NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/?topic=cooking">
+                  <NavDropdown.Item as={Link} to="/topics/cooking">
                     Cooking
                   </NavDropdown.Item>
                 </NavDropdown>
