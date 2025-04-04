@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
 import { ErrorCard } from './ErrorCard';
 import { useParams } from 'react-router-dom';
 import { PlaceholderCard } from './PlaceholderCard';
+import { HomeContext } from '../contexts/Home';
 
-export const ArticleDisplay = ({ searchParams, setHome }) => {
+export const ArticleDisplay = ({ searchParams }) => {
+  const { setHome } = useContext(HomeContext);
   const [articles, setArticles] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
