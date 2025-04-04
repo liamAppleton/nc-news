@@ -27,6 +27,7 @@ export const ArticleCard = ({ articleId }) => {
           className="article-image"
           variant="top"
           src={article.article_img_url}
+          alt={article.title}
         />
       </Link>
       <Card.Body>
