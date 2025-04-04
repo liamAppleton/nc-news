@@ -1,3 +1,7 @@
+.pace .pace-progress {
+  background: #ff4500 !important; /* Change to your desired color */
+}
+
 .card-width {
     width: 90%;
     max-width: 600px;
