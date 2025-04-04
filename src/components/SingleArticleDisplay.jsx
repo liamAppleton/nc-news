@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
-import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 import { CommentDisplay } from './CommentDisplay';
 import { Vote } from './Vote';
 import { CommentCount } from './CommentCount';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
+import { PlaceholderCard } from './PlaceholderCard';
 
 export const SingleArticleDisplay = ({ setHome }) => {
   const [singleArticle, setSingleArticle] = useState({});
@@ -30,7 +30,7 @@ export const SingleArticleDisplay = ({ setHome }) => {
 
   if (error) return <ErrorCard error={error} />;
 
-  if (loading) return <Loading />;
+  if (loading) return <PlaceholderCard />;
 
   return (
     <div className="container">

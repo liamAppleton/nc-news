@@ -77,6 +77,7 @@ export const Vote = ({ id, votes, componentName }) => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleUpClick();
           }}
+          onMouseDown={(event) => event.preventDefault()}
         />
         <p className="fs-6 m-0 user-select-none" style={{ cursor: 'default' }}>
           {optimisticVotes}
@@ -93,6 +94,7 @@ export const Vote = ({ id, votes, componentName }) => {
           onKeyDown={(e) => {
             if (e.key === 'Enter') handleDownClick();
           }}
+          onMouseDown={(event) => event.preventDefault()}
         />
       </div>
       {error && <p className="m-0 error-msg">Something went wrong</p>}
