@@ -41,6 +41,7 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
               onKeyDown={(e) => {
                 if (e.key === 'Enter') navigate(-1);
               }}
+              onMouseDown={(event) => event.preventDefault()}
             />
           )}
 
