@@ -6,9 +6,11 @@ import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from 'react-router-dom';
 import { themeToggle } from '../../utils/utils';
 import { IoArrowBackOutline } from 'react-icons/io5';
+import { useState } from 'react';
 
 export const NavBar = ({ searchParams, setSearchParams, home }) => {
   const navigate = useNavigate();
+  const [ariaTheme, setAriaTheme] = useState(false);
 
   const handleChange = (sortBy, direction) => {
     const newParams = new URLSearchParams(searchParams);
@@ -90,10 +92,23 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
             )}
             <div className="ms-auto">
               <Form.Check
+                aria-label="theme toggle"
+                role="button"
+                aria-pressed={ariaTheme}
+                tabIndex="0"
                 type="switch"
                 id="custom-switch"
                 label="Theme"
-                onClick={themeToggle}
+                onClick={() => {
+                  setAriaTheme((bool) => !bool);
+                  themeToggle();
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    setAriaTheme((bool) => !bool);
+                    themeToggle();
+                  }
+                }}
               />
             </div>
           </Navbar.Collapse>
