@@ -10,6 +10,7 @@ export const CommentCount = ({ article }) => {
           className="d-flex align-items-center"
         >
           <FaRegComment
+            aria-label="view comments"
             color={'#808080'}
             size={20}
             className="m-0 comment-icon"
