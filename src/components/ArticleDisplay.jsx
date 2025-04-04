@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
 import { getArticles } from '../../api';
 import { ArticleCard } from './ArticleCard';
-import { Loading } from './Loading';
 import { ErrorCard } from './ErrorCard';
 import { useParams } from 'react-router-dom';
+import { PlaceholderCard } from './PlaceholderCard';
 
 export const ArticleDisplay = ({ searchParams, setHome }) => {
   const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+  const [loading, setLoading] = useState(true);
   const { topic } = useParams();
   const sortByQuery = searchParams.get('sort_by');
   const orderQuery = searchParams.get('order');
@@ -35,7 +34,7 @@ export const ArticleDisplay = ({ searchParams, setHome }) => {
 
   if (error) return <ErrorCard error={error} />;
 
-  if (loading) return <Loading />;
+  if (loading) return <PlaceholderCard />;
 
   return (
     <div className="container">
