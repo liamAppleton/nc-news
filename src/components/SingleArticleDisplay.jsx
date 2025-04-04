@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { ErrorCard } from './ErrorCard';
 import { CommentDisplay } from './CommentDisplay';
@@ -9,13 +9,15 @@ import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 import { PlaceholderCard } from './PlaceholderCard';
 import { HomeContext } from '../contexts/Home';
+import { IoChevronBack } from 'react-icons/io5';
 
 export const SingleArticleDisplay = () => {
-  const { setHome } = useContext(HomeContext);
+  const { home, setHome } = useContext(HomeContext);
   const [singleArticle, setSingleArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { article_id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setHome(false);
@@ -39,6 +41,22 @@ export const SingleArticleDisplay = () => {
       <div className="row">
         <div className="col-12 d-flex justify-content-center mb-5">
           <Card className="card-width">
+            {!home && (
+              <IoChevronBack
+                aria-label="back"
+                role="button"
+                aria-pressed={home}
+                tabIndex="0"
+                className="arrow brand-red m-2 position-absolute"
+                style={{ left: '-40px', top: '-15x' }}
+                size={30}
+                onClick={() => navigate(-1)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') navigate(-1);
+                }}
+                onMouseDown={(event) => event.preventDefault()}
+              />
+            )}
             <Card.Img
               variant="top"
               src={singleArticle.article_img_url}

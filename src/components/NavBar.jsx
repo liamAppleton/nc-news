@@ -4,14 +4,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { ThemeToggle } from './ThemeToggle';
 import { Logo } from './Logo';
-import { Link, useNavigate } from 'react-router-dom';
-import { IoArrowBackOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 import { HomeContext } from '../contexts/Home';
 import { useContext } from 'react';
 
 export const NavBar = ({ searchParams, setSearchParams }) => {
   const { home } = useContext(HomeContext);
-  const navigate = useNavigate();
 
   const handleChange = (sortBy, direction) => {
     const newParams = new URLSearchParams(searchParams);
@@ -23,30 +21,10 @@ export const NavBar = ({ searchParams, setSearchParams }) => {
   };
 
   return (
-    <>
-      <Navbar
-        expand="sm"
-        className="bg-body-tertiary position-sticky top-0 mb-4"
-        style={{ zIndex: 1020 }}
-      >
+    <div className="position-sticky top-0 mb-4" style={{ zIndex: 1020 }}>
+      <Navbar expand="sm" className="bg-body-tertiary">
         <Container>
           <Logo />
-          {!home && (
-            <IoArrowBackOutline
-              aria-label="back"
-              role="button"
-              aria-pressed={home}
-              tabIndex="0"
-              className="arrow brand-red"
-              size={30}
-              onClick={() => navigate(-1)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') navigate(-1);
-              }}
-              onMouseDown={(event) => event.preventDefault()}
-            />
-          )}
-
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             {home && (
@@ -97,6 +75,6 @@ export const NavBar = ({ searchParams, setSearchParams }) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
+    </div>
   );
 };
