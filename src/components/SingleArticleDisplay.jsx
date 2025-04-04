@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import { ErrorCard } from './ErrorCard';
@@ -8,8 +8,10 @@ import { CommentCount } from './CommentCount';
 import { getArticleById } from '../../api';
 import { dateFormatter } from '../../utils/utils';
 import { PlaceholderCard } from './PlaceholderCard';
+import { HomeContext } from '../contexts/Home';
 
-export const SingleArticleDisplay = ({ setHome }) => {
+export const SingleArticleDisplay = () => {
+  const { setHome } = useContext(HomeContext);
   const [singleArticle, setSingleArticle] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

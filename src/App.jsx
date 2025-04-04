@@ -7,10 +7,8 @@ import { ErrorCard } from './components/ErrorCard';
 import { HomeProvider } from './contexts/Home';
 import { UserProvider } from './contexts/User';
 import { CommentsProvider } from './contexts/Comments';
-import { useState } from 'react';
 
 function App() {
-  const [home, setHome] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
 
   return (
@@ -20,24 +18,19 @@ function App() {
           <NavBar
             searchParams={searchParams}
             setSearchParams={setSearchParams}
-            home={home}
           />
           <Routes>
             <Route
               path="/"
-              element={
-                <ArticleDisplay searchParams={searchParams} setHome={setHome} />
-              }
+              element={<ArticleDisplay searchParams={searchParams} />}
             />
             <Route
               path="/topics/:topic"
-              element={
-                <ArticleDisplay searchParams={searchParams} setHome={setHome} />
-              }
+              element={<ArticleDisplay searchParams={searchParams} />}
             />
             <Route
               path="/articles/:article_id"
-              element={<SingleArticleDisplay home={home} setHome={setHome} />}
+              element={<SingleArticleDisplay />}
             />
 
             <Route

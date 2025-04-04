@@ -2,15 +2,16 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
+import { ThemeToggle } from './ThemeToggle';
+import { Logo } from './Logo';
 import { Link, useNavigate } from 'react-router-dom';
-import { themeToggle } from '../../utils/utils';
 import { IoArrowBackOutline } from 'react-icons/io5';
-import { useState } from 'react';
+import { HomeContext } from '../contexts/Home';
+import { useContext } from 'react';
 
-export const NavBar = ({ searchParams, setSearchParams, home }) => {
+export const NavBar = ({ searchParams, setSearchParams }) => {
+  const { home } = useContext(HomeContext);
   const navigate = useNavigate();
-  const [ariaTheme, setAriaTheme] = useState(false);
 
   const handleChange = (sortBy, direction) => {
     const newParams = new URLSearchParams(searchParams);
@@ -29,6 +30,7 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
         style={{ zIndex: 1020 }}
       >
         <Container>
+          <Logo />
           {!home && (
             <IoArrowBackOutline
               aria-label="back"
@@ -91,27 +93,7 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
                 <Nav.Item className="d-flex align-items-center ms-1 fs-6"></Nav.Item>
               </Nav>
             )}
-            <div className="ms-auto">
-              <Form.Check
-                aria-label="theme toggle"
-                role="button"
-                aria-pressed={ariaTheme}
-                tabIndex="0"
-                type="switch"
-                id="custom-switch"
-                label="Theme"
-                onClick={() => {
-                  setAriaTheme((bool) => !bool);
-                  themeToggle();
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    setAriaTheme((bool) => !bool);
-                    themeToggle();
-                  }
-                }}
-              />
-            </div>
+            <ThemeToggle />
           </Navbar.Collapse>
         </Container>
       </Navbar>
