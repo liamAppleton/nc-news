@@ -66,19 +66,33 @@ export const Vote = ({ id, votes, componentName }) => {
     <div className="d-flex gap-3 align-items-center">
       <div className="d-inline-flex gap-1 align-items-center border rounded-pill p-1">
         <BiUpvote
+          aria-label="up vote"
+          role="button"
+          aria-pressed={upClicked}
+          tabIndex="0"
           className="arrow vote-arrow-up"
           size={20}
           color={upClicked ? '#ff4500' : '#808080'}
           onClick={handleUpClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') handleUpClick();
+          }}
         />
         <p className="fs-6 m-0 user-select-none" style={{ cursor: 'default' }}>
           {optimisticVotes}
         </p>
         <BiDownvote
+          aria-label="down vote"
+          role="button"
+          aria-pressed={downClicked}
+          tabIndex="0"
           className="arrow vote-arrow-down"
           size={20}
           color={downClicked ? '#7193ff' : '#808080'}
           onClick={handleDownClick}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') handleDownClick();
+          }}
         />
       </div>
       {error && <p className="m-0 error-msg">Something went wrong</p>}

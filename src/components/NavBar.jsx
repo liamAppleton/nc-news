@@ -29,9 +29,16 @@ export const NavBar = ({ searchParams, setSearchParams, home }) => {
         <Container>
           {!home && (
             <IoArrowBackOutline
+              aria-label="back"
+              role="button"
+              aria-pressed={home}
+              tabIndex="0"
               className="arrow brand-red"
               size={30}
               onClick={() => navigate(-1)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') navigate(-1);
+              }}
             />
           )}
 

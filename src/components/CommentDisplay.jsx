@@ -24,7 +24,7 @@ export const CommentDisplay = ({ articleId }) => {
 
   return (
     <>
-      <div className="d-flex justify-content-between position-relative card-width">
+      <section className="d-flex justify-content-between position-relative card-width">
         <p>Comments</p>
         {commentsUpdated === 'post' && (
           <p
@@ -34,14 +34,14 @@ export const CommentDisplay = ({ articleId }) => {
             Post successful!
           </p>
         )}
-      </div>
-      <div className="mb-3">
+      </section>
+      <section className="mb-3">
         <AddComment
           articleId={articleId}
           postingComment={postingComment}
           setPostingComment={setPostingComment}
         />
-      </div>
+      </section>
       {postingComment && (
         <Card className="card-width text-muted mb-3">
           <Card.Body className="d-flex align-items-center gap-2">
@@ -51,7 +51,7 @@ export const CommentDisplay = ({ articleId }) => {
         </Card>
       )}
 
-      <div className="row">
+      <section className="row">
         {commentsForArticle.map((comment) => {
           return (
             <div
@@ -62,7 +62,7 @@ export const CommentDisplay = ({ articleId }) => {
             </div>
           );
         })}
-      </div>
+      </section>
     </>
   );
 };

@@ -37,7 +37,11 @@ export const SingleArticleDisplay = ({ setHome }) => {
       <div className="row">
         <div className="col-12 d-flex justify-content-center mb-5">
           <Card className="card-width">
-            <Card.Img variant="top" src={singleArticle.article_img_url} />
+            <Card.Img
+              variant="top"
+              src={singleArticle.article_img_url}
+              alt={singleArticle.title}
+            />
             <Card.Body>
               <Card.Title>{singleArticle.title}</Card.Title>
               <Card.Text className="fst-italic">

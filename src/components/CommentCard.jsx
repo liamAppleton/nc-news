@@ -55,6 +55,7 @@ export const CommentCard = ({ comment }) => {
           {loggedInUser === comment.author && (
             <DeleteButton
               commentId={comment.comment_id}
+              deleted={deleted}
               setDeleted={setDeleted}
             />
           )}
