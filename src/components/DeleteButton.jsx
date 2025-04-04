@@ -3,7 +3,7 @@ import { deleteComment } from '../../api';
 import { useContext, useState } from 'react';
 import { CommentsContext } from '../contexts/Comments';
 
-export const DeleteButton = ({ commentId, setDeleted }) => {
+export const DeleteButton = ({ commentId, deleted, setDeleted }) => {
   const { setCommentsUpdated } = useContext(CommentsContext);
   const [error, setError] = useState(false);
 
@@ -24,7 +24,18 @@ export const DeleteButton = ({ commentId, setDeleted }) => {
   return (
     <div className="d-flex align-items-center gap-1">
       {error && <p className="error-msg m-0">Unable to delete</p>}
-      <MdDeleteOutline className="bin" size={20} onClick={handleClick} />
+      <MdDeleteOutline
+        aria-label="delete comment"
+        role="button"
+        aria-pressed={deleted}
+        tabIndex="0"
+        className="bin"
+        size={20}
+        onClick={handleClick}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') handleClick();
+        }}
+      />
     </div>
   );
 };
