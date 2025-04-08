@@ -9,6 +9,8 @@ The design and functionality is based on the popular news site, Reddit. This is 
 
 You can visit the app here: https://nc-hub.netlify.app/
 
+It may take a little longer to load initially while the server warms up.
+
 ---
 
 ## Features
